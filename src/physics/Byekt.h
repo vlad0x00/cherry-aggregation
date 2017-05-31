@@ -17,16 +17,13 @@ class Byekt {
 
 public:
 
-	static const double DEFAULT_RADIUS = 5.0;
+	static constexpr double DEFAULT_RADIUS = 5.0;
 
 	Byekt(): radius(DEFAULT_RADIUS) {}
 	Byekt(double radius): radius(radius) {}
 
-	void set_position(const Vector3d &position) { this->position = position; }
-	Vector3d& get_position() const { return position; }
-
-	void set_velocity(const Vector3d &velocity) { this->velocity = velocity; }
-	Vector3d& get_velocity() const { return velocity; }
+	Vector3d& get_position() { return position; }
+	Vector3d& get_velocity() { return velocity; }
 
 	virtual ~Byekt() {}
 

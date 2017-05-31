@@ -6,12 +6,21 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include <Eigen/Dense>
+#include "simulation/Simulation.h"
+using simulation::Simulation;
 
-#include <iostream>
-using namespace std;
+#include <thread>
+using std::this_thread::sleep_for;
+
+#include <chrono>
+using namespace std::chrono_literals;
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	Simulation::start();
+
+    sleep_for(2000ms);
+
+	Simulation::stop();
+
 	return 0;
 }
