@@ -20,9 +20,6 @@ class Simulation {
 
 public:
 
-	static const unsigned STEPS_BEFORE_FLUSH = 101;
-	static const unsigned STEPS_BEFORE_SNAPSHOT = 300;
-
 	static void start();
 	static void stop();
 

@@ -14,8 +14,9 @@ using std::vector;
 #include "src/physics/Byekt.h"
 using physics::Byekt;
 
-#include <thread>
-using std::thread;
+#include <mutex>
+using std::recursive_mutex;
+using std::unique_lock;
 
 namespace simulation {
 
@@ -26,14 +27,16 @@ public:
 	static const unsigned BYEKTS_RESERVATION_SIZE = 1024;
 
 	static void initialize();
-	static void flush_steps_to_file();
-	static void save_snapshot_to_file();
-    static void finalize();
 
-	static vector<Byekt> blob_byekts;
-	static Byekt new_byekt;
+	static inline void acquire() { state_mutex.lock(); }
+	static inline void release() { state_mutex.unlock(); }
 
-	static thread *saving_thread;
+	static vector<Byekt*> blob_byekts;
+	static Byekt* new_byekt;
+
+private:
+
+	static recursive_mutex state_mutex;
 
 };
 

@@ -1,9 +1,8 @@
 //============================================================================
-// Name        : BallisticAggregationSim.cpp
+// Name        : CherryAggregation.cpp
 // Author      : Vladimir Nikolic & Vanja Knezevic
 // Version     :
 // Copyright   : Copyleft
-// Description : Hello World in C++, Ansi-style
 //============================================================================
 
 #include "simulation/Simulation.h"
@@ -18,7 +17,7 @@ using namespace std::chrono_literals;
 int main() {
 	Simulation::start();
 
-    sleep_for(2000ms);
+    sleep_for(5000ms);
 
 	Simulation::stop();
 

@@ -5,32 +5,17 @@
  *      Author: schutzekatze
  */
 
-#include <src/simulation/State.h>
-
-#include <RapidXML/rapidxml.hpp>
-using namespace rapidxml;
+#include "State.h"
 
 namespace simulation {
 
-vector<Byekt> State::blob_byekts;
-Byekt State::new_byekt;
+vector<Byekt*> State::blob_byekts;
+Byekt* State::new_byekt;
 
-thread *State::saving_thread;
+recursive_mutex State::state_mutex;
 
 void State::initialize() {
 	blob_byekts.reserve(BYEKTS_RESERVATION_SIZE);
-}
-
-void State::flush_steps_to_file() {
-
-}
-
-void State::save_snapshot_to_file() {
-
-}
-
-void State::finalize() {
-
 }
 
 } /* namespace physics */

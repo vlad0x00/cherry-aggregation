@@ -19,19 +19,28 @@ public:
 
 	static constexpr double DEFAULT_RADIUS = 5.0;
 
-	Byekt(): radius(DEFAULT_RADIUS) {}
-	Byekt(double radius): radius(radius) {}
-
-	Vector3d& get_position() { return position; }
-	Vector3d& get_velocity() { return velocity; }
-
-	virtual ~Byekt() {}
-
-private:
-
+	int id = ++id_counter;
 	double radius;
 	Vector3d position;
 	Vector3d velocity;
+
+	Byekt(): radius(DEFAULT_RADIUS), position(Vector3d(0, 0, 0)), velocity(Vector3d(0, 0, 0)) {}
+	Byekt(Vector3d position): radius(DEFAULT_RADIUS), position(position), velocity(Vector3d(0, 0, 0)) {}
+	Byekt(Vector3d position, double radius): radius(radius), position(position), velocity(Vector3d(0, 0, 0)) {}
+	Byekt(Vector3d position, double radius, Vector3d velocity):
+		radius(radius),
+		position(position),
+		velocity(velocity) {}
+
+	Byekt(const Byekt&) = delete;
+    Byekt(const Byekt&&) = delete;
+
+    Byekt& operator=(const Byekt&) = delete;
+    Byekt& operator=(const Byekt&&) = delete;
+
+private:
+
+    static int id_counter;
 
 };
 
