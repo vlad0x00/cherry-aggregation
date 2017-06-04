@@ -62,10 +62,10 @@ void History::finalize() {
 	snapshot_saving_thread = nullptr;
 
 	ofstream steps_file(STEPS_FILENAME, ios_base::app);
-	steps_file << "<" << STEPS_ROOT << "/>";
+	steps_file << "</" << STEPS_ROOT << ">";
 
 	ofstream snapshots_file(SNAPSHOTS_FILENAME, ios_base::app);
-	snapshots_file << "<" << SNAPSHOTS_ROOT << "/>";
+	snapshots_file << "</" << SNAPSHOTS_ROOT << ">";
 }
 
 void History::add_step_new(const Byekt& byekt) {

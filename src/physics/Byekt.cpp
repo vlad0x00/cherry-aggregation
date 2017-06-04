@@ -9,7 +9,7 @@
 
 namespace physics {
 
-int Byekt::id_counter = 0;
+long Byekt::id_counter = 0;
 
 }
 

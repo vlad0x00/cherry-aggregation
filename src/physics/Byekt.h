@@ -19,7 +19,7 @@ public:
 
 	static constexpr double DEFAULT_RADIUS = 5.0;
 
-	int id = ++id_counter;
+	long id = ++id_counter;
 	double radius;
 	Vector3d position;
 	Vector3d velocity;
@@ -40,7 +40,7 @@ public:
 
 private:
 
-    static int id_counter;
+    static long id_counter;
 
 };
 

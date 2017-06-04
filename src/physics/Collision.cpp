@@ -69,7 +69,7 @@ Vector3d Collision::find_collision_point(vector<Byekt*>& obstacles, Byekt& proje
 	Vector3d distance = direct + projection;
 
 	double radius_sum = projectile.radius + obstacle.radius;
-	double collision_displacement = sqrt(radius_sum*radius_sum - distance.norm());
+	double collision_displacement = sqrt(radius_sum*radius_sum + distance.norm()*distance.norm());
 
 	Vector3d collision_point = projectile.position +
 			(projection *

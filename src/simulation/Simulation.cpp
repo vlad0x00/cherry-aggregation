@@ -55,7 +55,7 @@ void Simulation::stop() {
 void Simulation::simulation_main() {
 	Vector3d origin, velocity;
 	double phi, theta;
-	const double pi = 3.14159265359, distance = 6000, velocity_magnitude = 10;
+	const double pi = 3.14159265359, distance = 30000, velocity_magnitude = 30000;
 
 	while (!stop_flag) {
 		phi = 2 * ((double)rand()) / RAND_MAX * pi;
@@ -82,13 +82,14 @@ void Simulation::simulation_main() {
 				Collision::find_collision_point(State::blob_byekts, *State::new_byekt);
 
 		while (!stop_flag) {
-			ByektManager::apply_velocity(byekt);
-
-			if ((collision_point - byekt->position).norm() <= byekt->radius) {
+			if ((collision_point - byekt->position).norm() <= byekt->velocity.norm()) {
 				ByektManager::move(byekt, collision_point);
 				State::blob_byekts.push_back(byekt);
 				State::new_byekt = nullptr;
 				break;
+			}
+			else {
+				ByektManager::apply_velocity(byekt);
 			}
 		}
 
