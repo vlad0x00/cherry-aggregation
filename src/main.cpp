@@ -17,7 +17,7 @@ using namespace std::chrono_literals;
 int main() {
 	Simulation::start();
 
-    sleep_for(180s);
+    sleep_for(10s);
 
 	Simulation::stop();
 
