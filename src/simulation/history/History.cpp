@@ -68,11 +68,11 @@ void History::finalize() {
 	snapshots_file << "</" << SNAPSHOTS_ROOT << ">";
 }
 
-void History::add_step_new(const Byekt& byekt) {
+void History::add_step_new(const Object& object) {
 	State::acquire();
 
 	steps_buffers[buffer_in_use].append_node(
-			HistoryStep::generate_step_new(steps_buffers[buffer_in_use], byekt)
+			HistoryStep::generate_step_new(steps_buffers[buffer_in_use], object)
 	);
 
 	total_step_counter++;
@@ -88,11 +88,11 @@ void History::add_step_new(const Byekt& byekt) {
 	State::release();
 }
 
-void History::add_step_move(const Byekt& byekt) {
+void History::add_step_move(const Object& object) {
 	State::acquire();
 
 	steps_buffers[buffer_in_use].append_node(
-			HistoryStep::generate_step_move(steps_buffers[buffer_in_use], byekt)
+			HistoryStep::generate_step_move(steps_buffers[buffer_in_use], object)
 	);
 
 	total_step_counter++;

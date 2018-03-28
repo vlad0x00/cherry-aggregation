@@ -8,7 +8,7 @@
 #ifndef PHYSICS_COLLISION_H_
 #define PHYSICS_COLLISION_H_
 
-#include "Byekt.h"
+#include "Object.h"
 
 #include <vector>
 using std::vector;
@@ -19,7 +19,7 @@ class Collision {
 
 public:
 
-	static Vector3d find_collision_point(vector<Byekt*>& obstacles, Byekt& projectile);
+	static Vector3d find_collision_point(vector<Object*>& obstacles, Object& projectile);
 
 };
 

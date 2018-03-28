@@ -19,7 +19,7 @@ using std::fabs;
 
 namespace physics {
 
-bool check_collision(Byekt& projectile, Byekt& obstacle) {
+bool check_collision(Object& projectile, Object& obstacle) {
 	Vector3d direct(projectile.position - obstacle.position);
 	Vector3d line_unit(projectile.velocity / projectile.velocity.norm());
 
@@ -35,22 +35,22 @@ bool check_collision(Byekt& projectile, Byekt& obstacle) {
 	return false;
 }
 
-Vector3d Collision::find_collision_point(vector<Byekt*>& obstacles, Byekt& projectile) {
-	vector<Byekt*> hit_byekts;
-	Byekt* first_hit_byekt;
+Vector3d Collision::find_collision_point(vector<Object*>& obstacles, Object& projectile) {
+	vector<Object*> hit_Objects;
+	Object* first_hit_Object;
 
-	for(Byekt* obstacle : obstacles) {
+	for(Object* obstacle : obstacles) {
 		if (check_collision(projectile, *obstacle)) {
-			hit_byekts.push_back(obstacle);
+			hit_Objects.push_back(obstacle);
 		}
 	}
 
-	if (hit_byekts.empty()) {
+	if (hit_Objects.empty()) {
 		return Vector3d(0, 0, 0);
 	}
 
-	first_hit_byekt = *min_element(hit_byekts.begin(), hit_byekts.end(),
-		[&projectile] (Byekt* b1, Byekt* b2) {
+	first_hit_Object = *min_element(hit_Objects.begin(), hit_Objects.end(),
+		[&projectile] (Object* b1, Object* b2) {
 			return
 					(projectile.position - b1->position).norm()
 					<
@@ -58,7 +58,7 @@ Vector3d Collision::find_collision_point(vector<Byekt*>& obstacles, Byekt& proje
 		}
 	);
 
-	Byekt& obstacle = *first_hit_byekt;
+	Object& obstacle = *first_hit_Object;
 
 	Vector3d direct(projectile.position - obstacle.position);
 	Vector3d line_unit(projectile.velocity / projectile.velocity.norm());

@@ -7,8 +7,8 @@
 
 #include "HistorySnapshot.h"
 
-#include "src/physics/Byekt.h"
-using physics::Byekt;
+#include "src/physics/Object.h"
+using physics::Object;
 
 #include "src/simulation/State.h"
 using simulation::State;
@@ -26,26 +26,26 @@ xml_document<>* HistorySnapshot::generate_snapshot(unsigned total_step_counter) 
 
 	NodeAttributeHelper::add_step_attribute(*doc, *snapshot_node, total_step_counter);
 
-	xml_node<> *byekt_node;
+	xml_node<> *object_node;
 
-	for(Byekt* byekt : State::blob_byekts) {
-		byekt_node = doc->allocate_node(node_element, HistorySnapshot::BYEKT_NODE_NAME);
+	for(Object* object : State::blob_objects) {
+		object_node = doc->allocate_node(node_element, HistorySnapshot::BYEKT_NODE_NAME);
 
-		NodeAttributeHelper::add_position_attributes(*doc, *byekt_node, *byekt);
-		NodeAttributeHelper::add_radius_attribute(*doc, *byekt_node, *byekt);
-		NodeAttributeHelper::add_id_attribute(*doc, *byekt_node, *byekt);
+		NodeAttributeHelper::add_position_attributes(*doc, *object_node, *object);
+		NodeAttributeHelper::add_radius_attribute(*doc, *object_node, *object);
+		NodeAttributeHelper::add_id_attribute(*doc, *object_node, *object);
 
-		snapshot_node->append_node(byekt_node);
+		snapshot_node->append_node(object_node);
 	}
 
-	if (State::new_byekt != nullptr) {
-		byekt_node = doc->allocate_node(node_element, HistorySnapshot::BYEKT_NODE_NAME);
+	if (State::new_object != nullptr) {
+		object_node = doc->allocate_node(node_element, HistorySnapshot::BYEKT_NODE_NAME);
 
-		NodeAttributeHelper::add_position_attributes(*doc, *byekt_node, *State::new_byekt);
-		NodeAttributeHelper::add_radius_attribute(*doc, *byekt_node, *State::new_byekt);
-		NodeAttributeHelper::add_id_attribute(*doc, *byekt_node, *State::new_byekt);
+		NodeAttributeHelper::add_position_attributes(*doc, *object_node, *State::new_object);
+		NodeAttributeHelper::add_radius_attribute(*doc, *object_node, *State::new_object);
+		NodeAttributeHelper::add_id_attribute(*doc, *object_node, *State::new_object);
 
-		snapshot_node->append_node(byekt_node);
+		snapshot_node->append_node(object_node);
 	}
 
 	doc->append_node(snapshot_node);

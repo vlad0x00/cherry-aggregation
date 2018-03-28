@@ -4,16 +4,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/physics/Byekt.cpp \
-../src/physics/Collision.cpp 
+../src/physics/Collision.cpp \
+../src/physics/Object.cpp 
 
 OBJS += \
-./src/physics/Byekt.o \
-./src/physics/Collision.o 
+./src/physics/Collision.o \
+./src/physics/Object.o 
 
 CPP_DEPS += \
-./src/physics/Byekt.d \
-./src/physics/Collision.d 
+./src/physics/Collision.d \
+./src/physics/Object.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

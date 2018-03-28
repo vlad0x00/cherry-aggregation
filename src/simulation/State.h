@@ -11,8 +11,8 @@
 #include <vector>
 using std::vector;
 
-#include "src/physics/Byekt.h"
-using physics::Byekt;
+#include "src/physics/Object.h"
+using physics::Object;
 
 #include <mutex>
 using std::recursive_mutex;
@@ -31,8 +31,8 @@ public:
 	static inline void acquire() { state_mutex.lock(); }
 	static inline void release() { state_mutex.unlock(); }
 
-	static vector<Byekt*> blob_byekts;
-	static Byekt* new_byekt;
+	static vector<Object*> blob_objects;
+	static Object* new_object;
 
 private:
 

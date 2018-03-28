@@ -1,15 +1,15 @@
 /*
- * Byekt.cpp
+ * Object.cpp
  *
  *  Created on: May 31, 2017
  *      Author: schutzekatze
  */
 
-#include "Byekt.h"
+#include "Object.h"
 
 namespace physics {
 
-long Byekt::id_counter = 0;
+long Object::id_counter = 0;
 
 }
 

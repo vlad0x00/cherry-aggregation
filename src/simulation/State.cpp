@@ -9,13 +9,13 @@
 
 namespace simulation {
 
-vector<Byekt*> State::blob_byekts;
-Byekt* State::new_byekt;
+vector<Object*> State::blob_objects;
+Object* State::new_object;
 
 recursive_mutex State::state_mutex;
 
 void State::initialize() {
-	blob_byekts.reserve(BYEKTS_RESERVATION_SIZE);
+	blob_objects.reserve(BYEKTS_RESERVATION_SIZE);
 }
 
 } /* namespace physics */

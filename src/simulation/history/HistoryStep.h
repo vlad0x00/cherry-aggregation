@@ -8,8 +8,8 @@
 #ifndef SIMULATION_HISTORYSTEP_H_
 #define SIMULATION_HISTORYSTEP_H_
 
-#include "src/physics/Byekt.h"
-using physics::Byekt;
+#include "src/physics/Object.h"
+using physics::Object;
 
 #include <RapidXML/rapidxml.hpp>
 using namespace rapidxml;
@@ -26,8 +26,8 @@ public:
 	static constexpr char* MOVE_NODE_NAME = "move";
 	static constexpr char* NEW_NODE_NAME = "new";
 
-	static xml_node<>* generate_step_move(xml_document<>& doc, const Byekt& byekt);
-	static xml_node<>* generate_step_new(xml_document<>& doc, const Byekt& byekt);
+	static xml_node<>* generate_step_move(xml_document<>& doc, const Object& object);
+	static xml_node<>* generate_step_new(xml_document<>& doc, const Object& object);
 
 };
 

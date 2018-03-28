@@ -8,8 +8,8 @@
 #ifndef SIMULATION_HISTORY_NODEATTRIBUTEHELPER_H_
 #define SIMULATION_HISTORY_NODEATTRIBUTEHELPER_H_
 
-#include "src/physics/Byekt.h"
-using physics::Byekt;
+#include "src/physics/Object.h"
+using physics::Object;
 
 #include <RapidXML/rapidxml.hpp>
 using namespace rapidxml;
@@ -33,9 +33,9 @@ public:
 
 	static void add_step_attribute(xml_document<>& doc, xml_node<>& node, unsigned step);
 
-    static void add_position_attributes(xml_document<>& doc, xml_node<>& node, const Byekt& byekt);
-    static void add_radius_attribute(xml_document<>& doc, xml_node<>& node, const Byekt& byekt);
-    static void add_id_attribute(xml_document<>& doc, xml_node<>& node, const Byekt& byekt);
+    static void add_position_attributes(xml_document<>& doc, xml_node<>& node, const Object& object);
+    static void add_radius_attribute(xml_document<>& doc, xml_node<>& node, const Object& object);
+    static void add_id_attribute(xml_document<>& doc, xml_node<>& node, const Object& object);
 
 };
 

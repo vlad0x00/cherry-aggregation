@@ -11,8 +11,8 @@
 #include <thread>
 using std::thread;
 
-#include "src/physics/Byekt.h"
-using physics::Byekt;
+#include "src/physics/Object.h"
+using physics::Object;
 
 #include <RapidXML/rapidxml.hpp>
 using namespace rapidxml;
@@ -40,8 +40,8 @@ public:
 	static void initialize();
     static void finalize();
 
-    static void add_step_new(const Byekt& byekt);
-    static void add_step_move(const Byekt& byekt);
+    static void add_step_new(const Object& object);
+    static void add_step_move(const Object& object);
 
 private:
 

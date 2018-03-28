@@ -20,7 +20,7 @@ class HistorySnapshot {
 public:
 
 	static constexpr char* SNAPSHOT_NODE_NAME = "snapshot";
-	static constexpr char* BYEKT_NODE_NAME = "byekt";
+	static constexpr char* BYEKT_NODE_NAME = "object";
 
 	static xml_document<>* generate_snapshot(unsigned total_step_counter);
 

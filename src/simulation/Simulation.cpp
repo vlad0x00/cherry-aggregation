@@ -12,9 +12,9 @@ using simulation::history::History;
 
 #include "State.h"
 
-#include "src/physics/Byekt.h"
-#include "ByektManager.h"
-using physics::Byekt;
+#include "src/physics/Object.h"
+#include <src/simulation/ObjectManager.h>
+using physics::Object;
 
 #include <thread>
 using std::this_thread::sleep_for;
@@ -73,23 +73,23 @@ void Simulation::simulation_main() {
 
 		State::acquire();
 
-		Byekt* byekt = ByektManager::create(
+		Object* object = ObjectManager::create(
 				origin,
-				Byekt::DEFAULT_RADIUS,
+				Object::DEFAULT_RADIUS,
 				velocity);
 
 		Vector3d collision_point =
-				Collision::find_collision_point(State::blob_byekts, *State::new_byekt);
+				Collision::find_collision_point(State::blob_objects, *State::new_object);
 
 		while (!stop_flag) {
-			if ((collision_point - byekt->position).norm() <= byekt->velocity.norm()) {
-				ByektManager::move(byekt, collision_point);
-				State::blob_byekts.push_back(byekt);
-				State::new_byekt = nullptr;
+			if ((collision_point - object->position).norm() <= object->velocity.norm()) {
+				ObjectManager::move(object, collision_point);
+				State::blob_objects.push_back(object);
+				State::new_object = nullptr;
 				break;
 			}
 			else {
-				ByektManager::apply_velocity(byekt);
+				ObjectManager::apply_velocity(object);
 			}
 		}
 
