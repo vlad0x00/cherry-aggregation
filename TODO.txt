@@ -1,4 +1,4 @@
 - Optimize simulation by spawning threads to generate trajectory history and having a main thread that handles spawning and collision checks. (OpenMP?)
 - Decouple History and Simulation by having History agnostic to Simulation implementation.
-- Add a collection of byekts to history that is updated on history routines so that it can asynchronously save snapshots. 
+- Add a collection of objects to history that is updated on history routines so that it can asynchronously save snapshots. 
   (Two buffers? One for snapshot saving and other for subsequent updates)
